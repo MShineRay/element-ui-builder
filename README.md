@@ -1,6 +1,6 @@
-# aw
+# element-ui-builder
 
-> My wicked Nuxt.js project
+> The builder for element-ui
 
 ## Build Setup
 
@@ -20,3 +20,15 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+## Documentation
+
+## Reference
+
+  * [NUXTJS](https://zh.nuxtjs.org)
+  * [element-ui](https://element.eleme.cn)
+  * [ElementUI theme-chalk](https://github.com/ElementUI/theme-chalk)
+  * [Express](http://www.expressjs.com.cn/)
+  
+## License
+MIT

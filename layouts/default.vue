@@ -85,7 +85,7 @@
   }
 
   .default__container .default_el-main-scrollbar {
-    height: calc(100% - 60px);
+    height: calc(100%);
   }
 
   .default__container .default_el-main-scrollbar > .el-scrollbar__wrap {
