@@ -5,7 +5,7 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cssmin = require('gulp-cssmin');
 const srcBasePath = './middleware/theme-chalk/src';
-const outBasePath = './assets/element-ui/lib';
+const outBasePath = './assets/element-ui';
 
 function compile() {
   return src(srcBasePath + "/*.scss")

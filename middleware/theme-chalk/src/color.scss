@@ -1,0 +1,11 @@
+@import "common/var";
+@import "mixins/mixins";
+
+@include b(color){
+  @include m(primary){
+    color: $--color-primary;
+  }
+  @include m(white){
+    color: $--color-white;
+  }
+}
