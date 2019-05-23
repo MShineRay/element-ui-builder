@@ -1,203 +1,22 @@
 <template>
   <el-aside class="app-lefter" width="200px" style="">
     <el-scrollbar class="app-lefter__scrollbar">
-      <el-menu :default-openeds="['1', '3']">
+      <el-menu :default-openeds="defaultOpeneds" router>
         <template v-for="(menu,index) in leftMenuList">
-          <el-submenu :index="index">
-            <template v-if="!menu.url" slot="title"><i class="el-icon-message"></i>默认样式</template>
-            <el-menu-item
-              v-if="menu.url"
-              :index="menu.url"
-              :key="'menu'+index"
-              @click="goToUrl(menu)"
-            >
+          <el-submenu :index="index"><!--1级-->
+            <el-menu-item v-if="menu.url" :index="menu.url" :key="'menu'+index" @click="goToUrl(menu)">
               <span slot="title">{{menu.name}}</span>
-            </el-menu-item>
-            <template v-if="menu.child && menu.child.length>0">
-
+            </el-menu-item><!--只有一级-->
+            <template v-if="!menu.url" slot="title"><i class="el-icon-message"></i>默认样式</template>
+            <template v-for="(item2,index2) in menu.group">
+              <el-menu-item-group :title="item2.name">
+                <template v-for="(item3,index3) in item2.child">
+                  <el-menu-item :index="item3.url">{{item3.name}}</el-menu-item>
+                </template>
+              </el-menu-item-group>
             </template>
-            <el-menu-item-group title="Basic">
-              <!--<template slot="title">Basic</template>-->
-              <el-menu-item index="1-001">Layout布局</el-menu-item>
-              <el-menu-item index="1-002">Container 布局容器</el-menu-item>
-              <el-menu-item index="1-003">Color 色彩</el-menu-item>
-              <el-menu-item index="1-004">Typography 字体</el-menu-item>
-              <el-menu-item index="1-005">Border 边框</el-menu-item>
-              <el-menu-item index="1-006">Icon 图标</el-menu-item>
-              <el-menu-item index="1-007">Button 按钮</el-menu-item>
-              <el-menu-item index="1-008">Link 文字链接</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="Form">
-              <el-menu-item index="1-1001">Radio 单选框</el-menu-item>
-              <el-menu-item index="1-1002">Checkbox 多选框</el-menu-item>
-              <el-menu-item index="1-1003">Input 输入框</el-menu-item>
-              <el-menu-item index="1-1004">InputNumber 计数器</el-menu-item>
-              <el-menu-item index="1-1005">Select 选择器</el-menu-item>
-              <el-menu-item index="1-1006">Cascader 级联选择器</el-menu-item>
-              <el-menu-item index="1-1007">Switch 开关</el-menu-item>
-              <el-menu-item index="1-1008">Slider 滑块</el-menu-item>
-              <el-menu-item index="1-1009">TimePicker 时间选择器</el-menu-item>
-              <el-menu-item index="1-1010">DatePicker 日期选择器</el-menu-item>
-              <el-menu-item index="1-1011">DateTimePicker 日期时间选择器</el-menu-item>
-              <el-menu-item index="1-1012">Upload 上传</el-menu-item>
-              <el-menu-item index="1-1013">Rate 评分</el-menu-item>
-              <el-menu-item index="1-1014">ColorPicker 颜色选择器</el-menu-item>
-              <el-menu-item index="1-1015">Transfer 穿梭框</el-menu-item>
-              <el-menu-item index="1-1016">Form 表单</el-menu-item>
-              <!---->
-              <!--Data-->
-              <!--Table 表格-->
-              <!--Tag 标签-->
-              <!--Progress 进度条-->
-              <!--Tree 树形控件-->
-              <!--Pagination 分页-->
-              <!--Badge 标记-->
-
-              <!--Notice-->
-              <!--Alert 警告-->
-              <!--Loading 加载-->
-              <!--Message 消息提示-->
-              <!--MessageBox 弹框-->
-              <!--Notification 通知-->
-              <!--Navigation-->
-              <!--NavMenu 导航菜单-->
-              <!--Tabs 标签页-->
-              <!--Breadcrumb 面包屑-->
-              <!--Dropdown 下拉菜单-->
-              <!--Steps 步骤条-->
-              <!--Others
-              Dialog 对话框
-              Tooltip 文字提示
-              Popover 弹出框
-              Card 卡片
-              Carousel 走马灯
-              Collapse 折叠面板
-              Timeline 时间线
-              Divider 分割线
-              Calendar 日历
-              Image 图片
-           -->
-            </el-menu-item-group>
-            <el-submenu index="1-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-            </el-submenu>
           </el-submenu>
         </template>
-        <el-submenu index="1">
-          <template slot="title"><i class="el-icon-message"></i>默认样式</template>
-          <el-menu-item-group title="Basic">
-            <!--<template slot="title">Basic</template>-->
-            <el-menu-item index="1-001">Layout布局</el-menu-item>
-            <el-menu-item index="1-002">Container 布局容器</el-menu-item>
-            <el-menu-item index="1-003">Color 色彩</el-menu-item>
-            <el-menu-item index="1-004">Typography 字体</el-menu-item>
-            <el-menu-item index="1-005">Border 边框</el-menu-item>
-            <el-menu-item index="1-006">Icon 图标</el-menu-item>
-            <el-menu-item index="1-007">Button 按钮</el-menu-item>
-            <el-menu-item index="1-008">Link 文字链接</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="Form">
-            <el-menu-item index="1-1001">Radio 单选框</el-menu-item>
-            <el-menu-item index="1-1002">Checkbox 多选框</el-menu-item>
-            <el-menu-item index="1-1003">Input 输入框</el-menu-item>
-            <el-menu-item index="1-1004">InputNumber 计数器</el-menu-item>
-            <el-menu-item index="1-1005">Select 选择器</el-menu-item>
-            <el-menu-item index="1-1006">Cascader 级联选择器</el-menu-item>
-            <el-menu-item index="1-1007">Switch 开关</el-menu-item>
-            <el-menu-item index="1-1008">Slider 滑块</el-menu-item>
-            <el-menu-item index="1-1009">TimePicker 时间选择器</el-menu-item>
-            <el-menu-item index="1-1010">DatePicker 日期选择器</el-menu-item>
-            <el-menu-item index="1-1011">DateTimePicker 日期时间选择器</el-menu-item>
-            <el-menu-item index="1-1012">Upload 上传</el-menu-item>
-            <el-menu-item index="1-1013">Rate 评分</el-menu-item>
-            <el-menu-item index="1-1014">ColorPicker 颜色选择器</el-menu-item>
-            <el-menu-item index="1-1015">Transfer 穿梭框</el-menu-item>
-            <el-menu-item index="1-1016">Form 表单</el-menu-item>
-            <!---->
-            <!--Data-->
-            <!--Table 表格-->
-            <!--Tag 标签-->
-            <!--Progress 进度条-->
-            <!--Tree 树形控件-->
-            <!--Pagination 分页-->
-            <!--Badge 标记-->
-
-            <!--Notice-->
-            <!--Alert 警告-->
-            <!--Loading 加载-->
-            <!--Message 消息提示-->
-            <!--MessageBox 弹框-->
-            <!--Notification 通知-->
-            <!--Navigation-->
-            <!--NavMenu 导航菜单-->
-            <!--Tabs 标签页-->
-            <!--Breadcrumb 面包屑-->
-            <!--Dropdown 下拉菜单-->
-            <!--Steps 步骤条-->
-            <!--Others
-            Dialog 对话框
-            Tooltip 文字提示
-            Popover 弹出框
-            Card 卡片
-            Carousel 走马灯
-            Collapse 折叠面板
-            Timeline 时间线
-            Divider 分割线
-            Calendar 日历
-            Image 图片
-         -->
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="2">
-          <template slot="title"><i class="el-icon-menu"></i>自定义</template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="2-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="2-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="3">
-          <template slot="title"><i class="el-icon-setting"></i>样式构建</template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="3-1">选项1</el-menu-item>
-            <el-menu-item index="3-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="3-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="3-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="4">
-          <template slot="title"><i class="el-icon-setting"></i>测试</template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="3-1">选项1</el-menu-item>
-            <el-menu-item index="3-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="3-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="3-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
       </el-menu>
     </el-scrollbar>
   </el-aside>
@@ -208,32 +27,58 @@
   export default {
     data() {
       return {
+        defaultOpeneds:[0],
         leftMenuList: [
           {
-            url: "",//url与child对立，如有值，则child为null，name不为空；若为空，则name为空，child有值
+            url: "",//1级：url与child对立，如有值，则child为null，name不为空；若为空，则name为空，child有值
             name: "默认样式",
             group: [
               {
-                groupName:"Basic",
-                child:[
-
-                ]
-              }
-            ],
-            child: [
-              {
-                title: "Basic"
+                url: "",//2级
+                name: "Basic",
+                child: [
+                  {url: "/default/base/layout", name: "Layout布局", group: [], child: []},//2级
+                  {url: "/default/base/container", name: "Container 布局容器", group: [], child: []},
+                  {url: "/default/base/color", name: "Color 色彩", group: [], child: []},
+                  {url: "/default/base/typography", name: "Typography 字体", group: [], child: []},
+                  {url: "/default/base/border", name: "Border 边框", group: [], child: []},
+                  {url: "/default/base/icon", name: "Icon 图标", group: [], child: []},
+                  {url: "/default/base/button", name: "Button 按钮", group: [], child: []},
+                  {url: "/default/base/link", name: "Link 文字链接", group: [], child: []}
+                ],
+                group:[]
               },
               {
-                title: "Form"
+                url: "",//2级
+                name: "Form",
+                child: [
+                  {url: "/default/form/radio", name: "Radio 单选框", group: [], child: []},//2级
+                  {url: "/default/form/checkbox", name: "Checkbox 多选框", group: [], child: []},
+                  {url: "/default/form/input", name: "Input 输入框", group: [], child: []},
+                  {url: "/default/form/input-number", name: "InputNumber 计数器", group: [], child: []},
+                  {url: "/default/form/select", name: "Select 选择器", group: [], child: []},
+                  {url: "/default/form/cascader", name: "Cascader 级联选择器", group: [], child: []},
+                  {url: "/default/form/switch", name: "Switch 开关", group: [], child: []},
+                  {url: "/default/form/slider", name: "Slider 滑块", group: [], child: []},
+                  {url: "/default/form/time-picker", name: "TimePicker 时间选择器", group: [], child: []},
+                  {url: "/default/form/date-picker", name: "DatePicker 日期选择器", group: [], child: []},
+                  {url: "/default/form/date-time-picker", name: "DateTimePicker 日期时间选择器", group: [], child: []},
+                  {url: "/default/form/upload", name: "Upload 上传", group: [], child: []},
+                  {url: "/default/form/rate", name: "Rate 评分", group: [], child: []},
+                  {url: "/default/form/color-picker", name: "ColorPicker 颜色选择器", group: [], child: []},
+                  {url: "/default/form/transfer", name: "Transfer 穿梭框", group: [], child: []},
+                  {url: "/default/form/form", name: "Form 表单", group: [], child: []},
+                ],
+                group:[]
               }
-            ]
+            ],
+            child: []
           }
         ]
       }
     },
-    methods:{
-      goToUrl(menu){
+    methods: {
+      goToUrl(menu) {
 
       }
     }
