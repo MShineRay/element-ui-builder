@@ -1,7 +1,7 @@
 {
   "name": "element-ui-builder",
   "version": "1.0.0",
-  "description": "My wicked Nuxt.js project",
+  "description": "element-ui-builder",
   "author": "mshineray",
   "private": false,
   "scripts": {

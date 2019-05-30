@@ -3,7 +3,7 @@
     <el-scrollbar class="app-lefter__scrollbar">
       <el-menu :default-openeds="defaultOpeneds" router>
         <template v-for="(menu,index) in leftMenuList">
-          <el-submenu :index="index"><!--1级-->
+          <el-submenu :index="''+index"><!--1级-->
             <el-menu-item v-if="menu.url" :index="menu.url" :key="'menu'+index" @click="goToUrl(menu)">
               <span slot="title">{{menu.name}}</span>
             </el-menu-item><!--只有一级-->
@@ -27,7 +27,7 @@
   export default {
     data() {
       return {
-        defaultOpeneds:[0],
+        defaultOpeneds:['0'],
         leftMenuList: [
           {
             url: "",//1级：url与child对立，如有值，则child为null，name不为空；若为空，则name为空，child有值
