@@ -8,4 +8,19 @@
   @include m(white){
     color: $--color-white;
   }
+  @include m(black){
+    color: $--color-black;
+  }
+  @include m(success){
+    color: $--color-success;
+  }
+  @include m(warning){
+    color: $--color-warning;
+  }
+  @include m(danger){
+    color: $--color-danger;
+  }
+  @include m(info){
+    color: $--color-info;
+  }
 }
