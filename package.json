@@ -11,12 +11,12 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint --fix",
-    "build-ui":"gulp build"
+    "build-ui": "gulp build"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
-    "element-ui": "^2.4.11",
+    "element-ui": "^2.10.1",
     "express": "^4.16.4",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.0.0",

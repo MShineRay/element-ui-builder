@@ -2,7 +2,12 @@ const pkg = require('./package')
 
 module.exports = {
   mode: 'spa',
-
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true
+    }
+  },
   /*
   ** Headers of the page
   */
