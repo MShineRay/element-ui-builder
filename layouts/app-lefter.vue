@@ -70,6 +70,14 @@
                   {url: "/default/form/form", name: "Form 表单", group: [], child: []},
                 ],
                 group:[]
+              },
+              {
+                url: "",//2级
+                name: "data",
+                child: [
+                  {url: "/default/data/table", name: "table 表格", group: [], child: []},//2级
+                ],
+                group:[]
               }
             ],
             child: []
