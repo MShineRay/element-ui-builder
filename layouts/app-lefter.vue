@@ -78,6 +78,14 @@
                   {url: "/default/data/table", name: "table 表格", group: [], child: []},//2级
                 ],
                 group:[]
+              },
+              {
+                url: "",//2级
+                name: "others",
+                child: [
+                  {url: "/default/others/infiniteScroll", name: "InfiniteScroll 无限滚动", group: [], child: []},//2级
+                ],
+                group:[]
               }
             ],
             child: []
