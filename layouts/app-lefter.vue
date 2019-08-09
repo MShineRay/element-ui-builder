@@ -7,7 +7,7 @@
             <el-menu-item v-if="menu.url" :index="menu.url" :key="'menu'+index" @click="goToUrl(menu)">
               <span slot="title">{{menu.name}}</span>
             </el-menu-item><!--只有一级-->
-            <template v-if="!menu.url" slot="title"><i class="el-icon-message"></i>默认样式</template>
+            <template v-if="!menu.url" slot="title"><i class="el-icon-message"></i>{{menu.name}}</template>
             <template v-for="(item2,index2) in menu.group">
               <el-menu-item-group :title="item2.name">
                 <template v-for="(item3,index3) in item2.child">
@@ -84,6 +84,21 @@
                 name: "others",
                 child: [
                   {url: "/default/others/infiniteScroll", name: "InfiniteScroll 无限滚动", group: [], child: []},//2级
+                ],
+                group:[]
+              }
+            ],
+            child: []
+          },
+          {
+            url: "",//1级：url与child对立，如有值，则child为null，name不为空；若为空，则name为空，child有值
+            name: "自测",
+            group: [
+              {
+                url: "",//2级
+                name: "calendar",
+                child: [
+                  {url: "/test/calendar/calendar", name: "calendar", group: [], child: []},//2级
                 ],
                 group:[]
               }
