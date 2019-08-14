@@ -1,7 +1,20 @@
 <template>
   <div>
-    <h2><a href="https://element.eleme.cn/#/zh-CN/component/select" target="_blank">Input 输入框</a></h2>
-    <p>通过鼠标或键盘输入字符。</p>
+    <h2><a href="https://element.eleme.cn/#/zh-CN/component/select" target="_blank">Select 选择器</a></h2>
+    <p>当选项过多时，使用下拉菜单展示并选择内容。</p>
+    <section>
+      <h3>基础用法</h3>
+      <p>适用广泛的基础单选</p>
+      <el-select v-model="value" placeholder="请选择" @change="sltChange" @visible-change="optClick">
+        <el-option
+          @click="optClick"
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+    </section>
     <section>
       <h3>可搜索</h3>
       <p>可以利用搜索功能快速查找选项</p>
@@ -45,6 +58,12 @@
       }
     },
     methods: {
+      sltChange(){
+        console.log('change')
+      },
+      optClick(){
+        console.log('visible-change')
+      },
       visibleChange(event){
         if(!event){
           setTimeout(()=>{

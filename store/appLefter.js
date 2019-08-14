@@ -70,6 +70,8 @@ export const state = () => ({
           name: "calendar",
           child: [
             {url: "/test/calendar/calendar", name: "calendar", group: [], child: []},//2级
+            {url: "/test/calendar/calendar-base", name: "calendar-base", group: [], child: []},//2级
+            {url: "/test/app/h5-open-weixin", name: "h5-open-weixin", group: [], child: []},//2级
           ],
           group: []
         }
