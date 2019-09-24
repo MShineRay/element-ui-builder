@@ -16,7 +16,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
-    "element-ui": "^2.10.1",
+    "element-ui": "^2.9.2",
     "express": "^4.16.4",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.0.0",

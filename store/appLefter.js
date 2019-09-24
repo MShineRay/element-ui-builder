@@ -55,6 +55,7 @@ export const state = () => ({
           name: "others",
           child: [
             {url: "/default/others/infiniteScroll", name: "InfiniteScroll 无限滚动", group: [], child: []},//2级
+            {url: "/default/others/popover", name: "Popover 弹出框", group: [], child: []},//2级
           ],
           group: []
         }
