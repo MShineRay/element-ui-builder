@@ -75,6 +75,14 @@ export const state = () => ({
             {url: "/test/app/h5-open-weixin", name: "h5-open-weixin", group: [], child: []},//2级
           ],
           group: []
+        },
+        {
+          url: "",//2级
+          name: "v-viewer",
+          child: [
+            {url: "/test/v-viewer/v-viewer", name: "v-viewer", group: [], child: []},//2级
+          ],
+          group: []
         }
       ],
       child: []
