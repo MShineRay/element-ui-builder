@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS按钮控制内容左右滚动</title>
+  <style>
+    *{ padding: 0; margin: 0;}
+    li{ list-style: none;}
+    .clearfix{ *zoom:1;}
+    .clearfix:after{ clear: both; display: block; content: ""; height: 0; overflow: hidden;}
+    a{ text-decoration: none; color: #333;}
+    a:hover{ color: #f00;}
+    .center{ text-align: center; margin-top: 20px; font-family: "Microsoft Yahei";}
+    #box{ width: 700px; margin: 20px auto; border: 1px solid #ccc; background: #fff; font-size: 12px; position: relative; height: 120px;}
+    #left ,#right{ position: absolute; z-index: 2px; cursor: pointer; background: #eee; width: 20px; text-align: center; height: 100%; line-height: 2.4; }
+    #left{ left: 0;}
+    #right{ right: 0;}
+    .content{ margin-left: 20px; width: 660px; height: 120px; overflow: hidden; position: relative; background: #ccc;}
+    #wrap{ position: absolute; left: 0; width: 1500px;}
+    #wrap ul{ padding: 10px 0;}
+    #wrap li{ float: left; width: 120px; height: 100px; background: purple; margin-left: 10px;}
+  </style>
+</head>
+<body>
+<h3 class="center">先向左滚动试试，然后向右滚动试试</h3>
+<div id="box">
+  <a id="left" href="javascript:;">向左滚动</a>
+  <a id="right" href="javascript:;">右下滚动</a>
+  <div class="content">
+    <div id="wrap">
+      <ul class="clearfix">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script>
+
+  // 封装getStyle函数
+  function getStyle(obj,attr){
+    return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj,false)[attr];
+  }
+
+  window.onload = function(){
+    var oBox = document.getElementById('box');
+    // alert(getStyle(oBox,'width'));        // 700px
+    var oLeft = document.getElementById('left');
+    var oRight = document.getElementById('right');
+    var oWrap = document.getElementById('wrap');
+    var num = 0;
+    var timer = null;
+
+    oLeft.onmousedown = function(){
+      oWrap.timer = setInterval(function(){
+        var dis = parseInt(getStyle(oWrap,'left')) - 5;
+        if(dis < -650){
+          dis = -650;
+        }
+        oWrap.style.left = dis + 'px';
+      },30);
+    };
+
+    oLeft.onmouseup = function(){
+      clearInterval(oWrap.timer);
+    };
+
+    oRight.onmousedown = function(){
+      oWrap.timer = setInterval(function(){
+        var dis = parseInt(getStyle(oWrap,'left')) + 5;
+        if(dis > 0){
+          dis = 0;
+        }
+        oWrap.style.left = dis + 'px';
+      },30);
+    };
+
+    oRight.onmouseup = function(){
+      clearInterval(oWrap.timer);
+    };
+  };
+  /*function getStyle(obj ,attr){
+      return obj.currentStyle ? obj.currentStyle[attr] :getComputedStyle(obj ,false)[attr];
+  }
+
+  window.onload = function(){
+      var oBox = document.getElementById('box');
+      // alert(getStyle(oBox,'width'))        // 168px
+      var oUp = document.getElementById('up');
+      var oDown = document.getElementById('down');
+      var oWrap = document.getElementById('wrap');
+      var num = 0;
+      var timer = null;
+
+      // 鼠标按下向上链接，开启定时器
+      oUp.onmousedown = function(){
+          oWrap.timer = setInterval(function(){
+              // 先获取内容的top值[获取的是字符串，所以要用parseInt转换成数字]，然后让它每隔300ms减少5px使之向上运动
+              var dis = parseInt(getStyle(oWrap,'top')) - 5;
+              // 这里的200是根据当前案例设置的，可以根据实际情况调整数值
+              if( dis < -220){
+                  dis = -220;
+              }
+              oWrap.style.top = dis + 'px';
+          },30);
+      };
+
+      // 鼠标移开向上链接，关闭定时器
+      oUp.onmouseup = function(){
+          clearInterval(oWrap.timer);
+      };
+
+      // 鼠标按下向下链接，开启定时器
+      oDown.onmousedown = function(){
+          oWrap.timer = setInterval(function(){
+              var dis = parseInt(getStyle(oWrap,'top')) + 5;
+              if(dis > 0){
+                  dis = 0;
+              }
+              oWrap.style.top = dis + 'px';
+          },30);
+      };
+
+      // 鼠标移开向下链接，关闭定时器
+      oDown.onmouseup = function(){
+          clearInterval(oWrap.timer);
+      };
+  };*/
+</script>
+</body>
+</html>

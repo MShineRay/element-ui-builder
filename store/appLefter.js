@@ -83,6 +83,15 @@ export const state = () => ({
             {url: "/test/v-viewer/v-viewer", name: "v-viewer", group: [], child: []},//2级
           ],
           group: []
+        },
+        {
+          url: "",//2级
+          name: "scroll",
+          child: [
+            {url: "/test/scroll/vue-seamless-scroll-demo", name: "vue-seamless-scroll", group: [], child: []},//2级
+            {url: "/test/scroll/better-scroll-demo", name: "vue-scroll", group: [], child: []},//2级
+          ],
+          group: []
         }
       ],
       child: []

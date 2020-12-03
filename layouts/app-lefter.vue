@@ -26,7 +26,7 @@
   export default {
     data() {
       return {
-        defaultOpeneds:['0']
+        defaultOpeneds:['0', '1']
       }
     },
     computed: {
